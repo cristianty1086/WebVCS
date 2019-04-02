@@ -7,12 +7,12 @@
     <section class="content-header">
       <h1>
       Panel de control 
-        <small>Nueva camara</small>
+        <small>Editar camara</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Panel de control</a></li>
         <li class="active">CamarasIp</li>
-        <li class="active">Nueva camara</li>
+        <li class="active">Editar camara</li>
       </ol>
     </section>
 
@@ -23,7 +23,7 @@
             <div class= "col-md-12">
               <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Nueva camara ip</h3>
+                        <h3 class="box-title">Editar camara ip</h3>
                     </div>
 
                     <div class="box-body">
@@ -31,7 +31,7 @@
                     <form method="POST" action="{{ route('post_camara')}}">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email"> 
+                            <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
@@ -56,8 +56,7 @@
                         <div class="form-group">
                             <label for="escena">Escena</label>
                             <input name="escena" type="text" class="form-control" id="escena" aria-describedby="emailHelp" placeholder="Escena"> 
-                        </div>
-                        {{ csrf_field() }}
+                        </div> 
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
  

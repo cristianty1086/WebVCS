@@ -38,7 +38,7 @@
           <div class= "col-md-12">
               <div class="box box-info">
                   <div class="box-header with-border">
-                      <h3 class="box-title">Camaras Ip</h3>
+                      <h3 class="box-title">Usuarios</h3>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
@@ -47,32 +47,20 @@
                               <thead>
                                   <tr>
                                       <th>Id </th>
-                                      <th>Username</th>
-                                      <th>Password</th>
-                                      <th>Modelo</th>
-                                      <th>Url</th>
-                                      <th>Direccion</th>
-                                      <th>Referencia</th>
-                                      <th>Escena</th>
-                                      <th>Estado</th>
-                                      <th>Opciones</th>
+                                      <th>Correo electronico</th>
+                                      <th>Nombre</th> 
+                                      <th>Tipo de cuenta</th> 
+                                      <th>Estado</th> 
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach($camarasip as $camara) 
+                                  @foreach($usuarios as $usuario) 
                                   <tr>
-                                      <td>{{ $camara['idcamara'] }}</td>
-                                      <td>{{ $camara['username'] }}</td>
-                                      <td>{{ $camara['passwd'] }}</td>
-                                      <td>{{ $camara['modelo'] }}</td>
-                                      <td>{{ $camara['url'] }}</td>
-                                      <td>{{ $camara['ubicacion']['direccion'] }}</td>
-                                      <td>{{ $camara['ubicacion']['referencia'] }}</td>
-                                      <td>{{ $camara['ubicacion']['escena'] }}</td>
-                                      <td>{{ $camara['estado'] }}</td>                                            
-                                      <td> 
-                                          <a href="/camaras_ip/{{ $camara->idcamara }}/edit" class="btn btn-xs btn-success" >Editar</a> 
-                                      </td> 
+                                      <td>{{ $usuario['id'] }}</td>
+                                      <td>{{ $usuario['email'] }}</td>
+                                      <td>{{ $usuario['name'] }}</td> 
+                                      <td>{{ $usuario['role']['nombre'] }}</td> 
+                                      <td>{{ $usuario['estado'] }}</td>     
                                   </tr>
                                   @endforeach
                               </tbody>

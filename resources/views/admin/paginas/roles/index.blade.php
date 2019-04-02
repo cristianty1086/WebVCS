@@ -18,13 +18,14 @@
     <!-- Main content -->
     <section class="content">  
 
-    <div class="row">
+    <div class="row" style="display: flex; justify-content: center; align-items: center;">
         <div class= "col-md-4">
+            </br>
             <div class="box box-info">
                 <div class="box-header with-border">
                     <h3 class="box-title">Roles de usuario</h3>
                 </div>
-                <!-- /.box-header -->
+                <!-- /.box-header -->                
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table" cellspacing="0" width="100%" id = "dataTable" name ="dataTable">

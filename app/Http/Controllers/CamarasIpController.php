@@ -2,12 +2,24 @@
 
 namespace vcsweb\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use vcsweb\CamarasIp;
 use vcsweb\Ubicacione;
+use Illuminate\Support\Facades\Auth;
 
 class CamarasIpController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +42,19 @@ class CamarasIpController extends Controller
         return view('paginas.lista_camaras.create');
     }
     
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($cameraId)
+    {
+        //
+        $camara = CamarasIp::where("idcamara", $cameraId)->first(); 
+        $ubicacion = Ubicacione::where("idubicacion", $camara->idubicacion);  
+        return view('admin.paginas.lista_camaras.edit',['camaraip'=>$camara, 'idubicacion'=>$ubicacion]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -63,17 +88,7 @@ class CamarasIpController extends Controller
         //
         return view('paginas.lista_camaras.show',['camara'=>CamarasIp::findOrFail($id)]);
     }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('paginas.lista_camaras.show',['camara'=>CamarasIp::findOrFail($id)]);
-    }
+     
     
     /**
      * Update the specified resource in storage.
@@ -122,7 +137,9 @@ class CamarasIpController extends Controller
      */
     public function camaras_ip()
     {
-        $camaras = CamarasIp::orderBy('idcamara','desc')->get();
+        $id = Auth::id();
+
+        $camaras = CamarasIp::where("user_id", $id)->get(); 
         $out = [];
         foreach ($camaras as $camara) {
             $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
@@ -141,7 +158,9 @@ class CamarasIpController extends Controller
      */
     public function nueva_camaras_ip()
     {
-        $camaras = CamarasIp::orderBy('idcamara','desc')->get();
+        $id = Auth::id();
+
+        $camaras = CamarasIp::where("user_id", $id);
         $out = [];
         foreach ($camaras as $camara) {
             $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
@@ -159,26 +178,49 @@ class CamarasIpController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function post_camara($request)
+    public function post_camara(Request $request)
     {
-        $ci = new UbicacioneController();
+     
+        $id = Auth::id();
+        $ci = new Ubicacione();
         
-        $ci->username = $request->direccion;
-        $ci->passwd = $request->referencia;
-        $ci->modelo = $request->escena; 
-        $ci->save();
+        $ci->direccion = $request->direccion;
+        $ci->referencia = $request->referencia;
+        $ci->escena = $request->escena;   
+        $ci->save(); 
 
-        $nc = new CamarasIpController();
-        
+        $nc = new CamarasIp();
+        $nc->user_id = $id;
         $nc->username = $request->username;
-        $nc->passwd = $request->passwd;
+        $nc->passwd = $request->password;
         $nc->modelo = $request->modelo;
         $nc->url = $request->url;
         $nc->idubicacion = $ci->idubicacion;
         $nc->estado =1;     
         $nc->save();
          
-        return view('admin.paginas.lista_camaras.create',['camarasip'=>$out]);
+        $camaras = CamarasIp::where("user_id", $id);
+        $out = [];
+        foreach ($camaras as $camara) {
+            $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
+            $item = $camara;
+            $item['ubicacion'] = $ubicacion;
+            $out[] = $item;
+        }
+        return view('admin.paginas.lista_camaras.index',['camarasip'=>$out]);
+    }
+
+
+  /**
+     * Show the application camaras ip.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function edit_camera($cameraId)
+    { 
+        $camara = CamarasIp::where("idcamara", $cameraId)->first(); 
+        $ubicacion = Ubicacione::where("idubicacion", $camara->idubicacion);  
+        return view('admin.paginas.lista_camaras.edit',['camaraip'=>$camara, 'idubicacion'=>$ubicacion]);
     }
 
 }

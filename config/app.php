@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'vcsweb'),
+    'name' => env('APP_NAME', 'Web Video Continous Surveillance'),
 
     /*
     |--------------------------------------------------------------------------

@@ -9,7 +9,7 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Administrados</p>
+              <p>Administrador</p>
               <a href="#"><i class="fa fa-circle text-success"></i>Admin</a>
             </div>
           </div> 
@@ -27,6 +27,12 @@
             <li>
                 <a href="/roles">
                 <i class="fa fa-user"></i> <span class="span_li">Roles</span>               
+                </a>
+            </li> 
+
+            <li>
+                <a href="/usuarios">
+                <i class="fa fa-user"></i> <span class="span_li">Usuarios</span>               
                 </a>
             </li> 
 

@@ -3,6 +3,7 @@
 namespace vcsweb\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Ubicacione;
 
 class UbicacioneController extends Controller
 {
@@ -15,7 +16,7 @@ class UbicacioneController extends Controller
      */
     public function store(Request $request)
     {
-        $ci = new UbicacioneController();
+        $ci = new Ubicacione();
         
         $ci->username = $request->direccion;
         $ci->passwd = $request->referencia;
