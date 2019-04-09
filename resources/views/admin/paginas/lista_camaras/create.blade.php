@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', ['seccion'=>'lista_camaras'])
 
 @section('title', 'Home') 	
 
@@ -28,7 +28,7 @@
 
                     <div class="box-body">
 
-                    <form method="POST" action="{{ route('post_camara')}}">
+                    <form method="POST" action="{{ route('add_camara')}}">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email"> 

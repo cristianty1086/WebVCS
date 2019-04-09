@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', ['seccion'=>'dashboard'])
 
 @section('title', 'Home') 	
 

@@ -16,37 +16,66 @@
          
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu" data-widget="tree" >
+          <ul class="sidebar-menu" data-widget="tree" >            
+            <?php
+              if($seccion == "dashboard"){
+                echo '<li class="active">';
+              }
+              else{
+                echo '<li>';
+              }
+              echo '<a href="/home">';
+              echo '<i class="fa fa-dashboard"></i> <span class="span_li">Dashboard</span>';
+              echo '</a>';
+              echo '</li>';
+              
 
-            <li>
-                <a href="/home">
-                <i class="fa fa-dashboard"></i> <span class="span_li">Dashboard</span>               
-                </a> 
-            </li> 
+              if($seccion == "roles"){
+                echo '<li class="active">';
+              }
+              else{
+                echo '<li>';
+              }
+              echo '<a href="/roles">';
+              echo '<i class="fa fa-user"></i> <span class="span_li">Roles</span>';
+              echo '</a>';
+              
 
-            <li>
-                <a href="/roles">
-                <i class="fa fa-user"></i> <span class="span_li">Roles</span>               
-                </a>
-            </li> 
+              if($seccion == "usuarios"){
+                echo '<li class="active">';
+              }
+              else{
+                echo '<li>';
+              }
+              echo '<a href="/usuarios">';
+              echo '<i class="fa fa-user"></i> <span class="span_li">Usuarios</span>';
+              echo '</a>';
+              echo '</li>';
+              
 
-            <li>
-                <a href="/usuarios">
-                <i class="fa fa-user"></i> <span class="span_li">Usuarios</span>               
-                </a>
-            </li> 
-
-            <li>
-                <a href="/camaras_ip">
-                <i class="fa fa-camera"></i> <span class="span_li">Camaras Ip</span>               
-                </a>
-            </li> 
-
-            <li>
-                <a href="/analisis">
-                <i class="fa fa-table"></i> <span class="span_li">Analisis de videostream</span>               
-                </a>
-            </li>  
+              if($seccion == "lista_camaras"){
+                echo '<li class="active">';
+              }
+              else{
+                echo '<li>';
+              }
+              echo '<a href="/camaras_ip">';
+              echo '<i class="fa fa-camera"></i> <span class="span_li">Camaras Ip</span>';
+              echo '</a>';
+              echo '</li>';
+              
+              
+              if($seccion == "analisis"){
+                echo '<li class="active">';
+              }
+              else{
+                echo '<li>';
+              }
+              echo '<a href="/analisis">';
+              echo '<i class="fa fa-table"></i> <span class="span_li">Analisis de videostream</span> ';
+              echo '</a>';
+              echo '</li>';
+            ?>              
             
           </ul>
         </section>

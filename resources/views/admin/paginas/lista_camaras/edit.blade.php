@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', ['seccion'=>'lista_camaras'])
 
 @section('title', 'Home') 	
 
@@ -31,33 +31,59 @@
                     <form method="POST" action="{{ route('post_camara')}}">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input name="username" type="text" class="form-control" id="username" 
+                            aria-describedby="emailHelp" placeholder="Enter email" value="{{$camaraip->username}}">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input name="password" type="text" class="form-control" id="password" placeholder="Password">
+                            <label for="passwd">Password</label>
+                            <input name="passwd" type="text" class="form-control" id="passwd" 
+                            placeholder="Password" value="{{$camaraip->passwd}}">
                         </div> 
                         <div class="form-group">
                             <label for="modelo">Modelo</label>
-                            <input name="modelo" type="text" class="form-control" id="modelo" aria-describedby="emailHelp" placeholder="Modelo"> 
+                            <input name="modelo" type="text" class="form-control" id="modelo" aria-describedby="emailHelp" 
+                            placeholder="Modelo" value="{{$camaraip->modelo}}"> 
                         </div>
                         <div class="form-group">
                             <label for="url">Url</label>
-                            <input name="url" type="text" class="form-control" id="url" aria-describedby="emailHelp" placeholder="Url"> 
+                            <input name="url" type="text" class="form-control" id="url" aria-describedby="emailHelp" 
+                            placeholder="Url" value="{{$camaraip->url}}"> 
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select name="estado" class="form-control" id="estado">
+                                <?php
+                                    if($camaraip->estado == 1){
+                                        echo '<option value="1" selected>habilitado</option>';
+                                        echo '<option value="0">desperfecto</option>';
+                                    }else{
+                                        echo '<option value="1">habilitado</option>';
+                                        echo '<option value="0" selected>desperfecto</option>';
+                                    }
+                                ?>
+                            </select> 
                         </div>
                         <div class="form-group">
                             <label for="direccion">Direccion</label>
-                            <input name="direccion" type="text" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Direccion"> 
+                            <input name="direccion" type="text" class="form-control" id="direccion" aria-describedby="emailHelp" 
+                            placeholder="Direccion" value="{{$ubicacion->direccion}}"> 
                         </div>
                         <div class="form-group">
                             <label for="referencia">Referencia</label>
-                            <input name="referencia" type="text" class="form-control" id="referencia" aria-describedby="emailHelp" placeholder="Referencia"> 
+                            <input name="referencia" type="text" class="form-control" id="referencia" aria-describedby="emailHelp" 
+                            placeholder="Referencia" value="{{$ubicacion->referencia}}"> 
                         </div>
                         <div class="form-group">
                             <label for="escena">Escena</label>
-                            <input name="escena" type="text" class="form-control" id="escena" aria-describedby="emailHelp" placeholder="Escena"> 
+                            <input name="escena" type="text" class="form-control" id="escena" aria-describedby="emailHelp" 
+                            placeholder="Escena" value="{{$ubicacion->escena}}"> 
                         </div> 
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        {{ csrf_field() }}
+                            <input name="idc" type="hidden" id="idc" 
+                            placeholder="Escena" value="{{$camaraip->idcamara}}"> 
+                            <input name="idubicacion" type="hidden" id="idu" 
+                            placeholder="Escena" value="{{$ubicacion->idubicacion}}"> 
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
  
                     </div>

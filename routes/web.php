@@ -29,8 +29,9 @@ Route::get('/camaras_ip', 'CamarasIpController@camaras_ip')->name('camaras_ip')-
 Route::get('/usuarios', 'UsuarioController@usuarios')->name('usuarios')->middleware('auth');
 
 Route::get('/nueva_camara', 'CamarasIpController@nueva_camaras_ip')->name('nueva_camaras_ip')->middleware('auth');
-Route::post('/add_camera', 'CamarasIpController@post_camara')->name('post_camara')->middleware('auth');
-Route::get('/camaras_ip/{camera_id}/edit', 'CamarasIpController@edit')->name('camaras_ip.edit')->middleware('auth');
+Route::post('/add_camera', 'CamarasIpController@add_camara')->name('add_camara')->middleware('auth');
+Route::get('/edit_camera/{camera_id}', 'CamarasIpController@edit')->name('camaras_ip.edit')->middleware('auth');
+Route::post('/post_camara', 'CamarasIpController@update')->name('post_camara')->middleware('auth');
 
 Route::get('/analisis', 'HomeController@analisis')->name('analisis')->middleware('auth');
 

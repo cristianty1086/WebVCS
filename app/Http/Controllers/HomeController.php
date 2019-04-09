@@ -4,6 +4,7 @@ namespace vcsweb\Http\Controllers;
 
 use Illuminate\Http\Request;
 use vcsweb\CamarasIp;
+use vcsweb\MetodoAnalisi;
 use vcsweb\role;
 use vcsweb\Ubicacione;
 
@@ -51,7 +52,7 @@ class HomeController extends Controller
     public function analisis()
     {
         $camaras = CamarasIp::orderBy('idcamara','desc')->get();
-
-        return view('admin.paginas.analisis.index',['camarasip'=>$camaras]);
+        $metodos = MetodoAnalisi::orderBy('nombremetodo','desc')->get();
+        return view('admin.paginas.analisis.index',['camarasip'=>$camaras, 'metodos'=>$metodos]);
     }
 }

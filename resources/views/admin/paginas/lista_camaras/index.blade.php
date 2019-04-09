@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', ['seccion'=>'lista_camaras'])
 
 @section('title', 'Home') 	
 
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="box-body">
-                        <a href="nueva_camara"><button class="btn btn-dark">Agregar</button></a>
+                        <a href="nueva_camara"><button class="btn btn-primary">Agregar</button></a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                                       <td>{{ $camara['ubicacion']['escena'] }}</td>
                                       <td>{{ $camara['estado'] }}</td>                                            
                                       <td> 
-                                          <a href="/camaras_ip/{{ $camara->idcamara }}/edit" class="btn btn-xs btn-success" >Editar</a> 
+                                          <a href="/edit_camera/{{ $camara->idcamara }}" class="btn btn-xs btn-success" >Editar</a> 
                                       </td> 
                                   </tr>
                                   @endforeach

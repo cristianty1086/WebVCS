@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', ['seccion'=>'usuarios'])
 
 @section('title', 'Home') 	
 
@@ -22,11 +22,11 @@
             <div class= "col-md-12">
               <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Nueva camara ip</h3>
+                        <h3 class="box-title">Nuevo usuario</h3>
                     </div>
 
                     <div class="box-body">
-                        <a href="nueva_camara"><button class="btn btn-dark">Agregar</button></a>
+                        <a href="nueva_camara"><button class="btn btn-primary">Agregar</button></a>
                     </div>
                 </div>
             </div>
