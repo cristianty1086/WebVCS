@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreateMetodobaseparamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+        Schema::create('metodobaseparams', function (Blueprint $table) {
+            $table->bigIncrements('id'); 
+            $table->integer('camaraip_id');
+            //$table->foreign('camaraip_id')->references('id')->on('camarasip');
+            $table->char('contenido');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('metodobaseparams');
     }
 }

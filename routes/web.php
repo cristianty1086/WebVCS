@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use vcsweb\role;
+use vcsweb\Role;
 
 Route::get('/', function () {
     return view('auth/login');
 });
 
 Route::get('/registrar', function () {
-    $roles = role::all();
+    $roles = Role::all(); 
     return view('auth/register',['roles'=>$roles]);
 });
 

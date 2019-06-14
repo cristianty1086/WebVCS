@@ -5,7 +5,7 @@ namespace vcsweb\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use vcsweb\User;
-use vcsweb\role;
+use vcsweb\Role;
 
 class UsuarioController extends Controller
 {
@@ -21,7 +21,7 @@ class UsuarioController extends Controller
         $usuarios = User::all();
         $out = [];
         foreach ($usuarios as $usuario) {
-            $role = role::where('id',$usuario->role_id)->first();
+            $role = Role::where('id',$usuario->role_id)->first();
             $item = $usuario;
             $item['role'] = $role;
             $out[] = $item;

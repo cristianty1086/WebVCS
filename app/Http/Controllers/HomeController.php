@@ -3,9 +3,9 @@
 namespace vcsweb\Http\Controllers;
 
 use Illuminate\Http\Request;
-use vcsweb\CamarasIp;
+use vcsweb\CamaraIp;
 use vcsweb\MetodoAnalisi;
-use vcsweb\role;
+use vcsweb\Role;
 use vcsweb\Ubicacione;
 
 class HomeController extends Controller
@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $camaras = CamarasIp::orderBy('idcamara','desc')->get();
+        $camaras = CamaraIp::orderBy('id','desc')->get();
 
         return view('admin.paginas.dashboard.index',['camarasip'=>$camaras]);
     }
@@ -39,7 +39,7 @@ class HomeController extends Controller
      */
     public function roles()
     {
-        $roles = role::all();
+        $roles = Role::all();
 
         return view('admin.paginas.roles.index',['roles'=>$roles]);
     }

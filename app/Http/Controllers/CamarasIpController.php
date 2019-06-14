@@ -4,7 +4,7 @@ namespace vcsweb\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use vcsweb\CamarasIp;
+use vcsweb\CamaraIp;
 use vcsweb\Ubicacione; 
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +27,7 @@ class CamarasIpController extends Controller
      */
     public function index()
     {
-        $camaras = CamarasIp::all();                
+        $camaras = CamaraIp::all();                
         return view('paginas.lista_camaras.index',['camaras'=>$camaras]);
     }
     
@@ -50,8 +50,8 @@ class CamarasIpController extends Controller
     public function edit($cameraId)
     {
         //
-        $camara = CamarasIp::where("idcamara", $cameraId)->first(); 
-        $ubicacion = Ubicacione::where("idubicacion", $camara->idubicacion)->first();  
+        $camara = CamaraIp::where("id", $cameraId)->first(); 
+        $ubicacion = Ubicacione::where("id", $camara->ubicacion_id)->first();  
         return view('admin.paginas.lista_camaras.edit',['camaraip'=>$camara, 'ubicacion'=>$ubicacion]);
     }
 
@@ -73,7 +73,7 @@ class CamarasIpController extends Controller
         $ci->estado =1;     
         $ci->save();
         
-        $camaras = CamarasIp::all();           
+        $camaras = CamaraIp::all();           
         return view('paginas.lista_camaras.index',['camaras'=>$camaras]);
     }
     
@@ -86,7 +86,7 @@ class CamarasIpController extends Controller
     public function show($id)
     {
         //
-        return view('paginas.lista_camaras.show',['camara'=>CamarasIp::findOrFail($id)]);
+        return view('paginas.lista_camaras.show',['camara'=>CamaraIp::findOrFail($id)]);
     }
      
     
@@ -99,18 +99,18 @@ class CamarasIpController extends Controller
      */
     public function update(Request $request)
     {
-        $ci = CamarasIp::findOrFail($request->idc);
+        $ci = CamaraIp::findOrFail($request->idc);
         
         $ci->username = $request->username;
         $ci->passwd = $request->passwd;
         $ci->modelo = $request->modelo;
         $ci->url = $request->url;
-        $ci->idubicacion = $request->idubicacion;
+        $ci->ubicacion_id = $request->idubicacion;
         $ci->estado = $request->estado;     
         $ci->update();
         
-        $camaras = CamarasIp::all();
-        return redirect()->route('camaras_ip');
+        $camaras = CamaraIp::all();                
+        return view('admin.paginas.lista_camaras.index',['camarasip'=>$camaras]);
     }
     
     /**
@@ -126,7 +126,7 @@ class CamarasIpController extends Controller
         $ci->estado = 0;
         $ci->update();
         
-        $camaras = CamarasIp::all();
+        $camaras = CamaraIp::all();
         return view('paginas.lista_camaras.index',['camaras'=>$camaras]);
     }
     
@@ -139,10 +139,10 @@ class CamarasIpController extends Controller
     {
         $id = Auth::id();
 
-        $camaras = CamarasIp::where("user_id", $id)->get(); 
+        $camaras = CamaraIp::where("user_id", $id)->get(); 
         $out = [];
         foreach ($camaras as $camara) {
-            $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
+            $ubicacion = Ubicacione::where('id',$camara->ubicacion_id)->first();
             $item = $camara;
             $item['ubicacion'] = $ubicacion;
             $out[] = $item;
@@ -160,10 +160,10 @@ class CamarasIpController extends Controller
     {
         $id = Auth::id();
 
-        $camaras = CamarasIp::where("user_id", $id);
+        $camaras = CamaraIp::where("user_id", $id);
         $out = [];
         foreach ($camaras as $camara) {
-            $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
+            $ubicacion = Ubicacione::where('id',$camara->idubicacion)->first();
             $item = $camara;
             $item['ubicacion'] = $ubicacion;
             $out[] = $item;
@@ -182,30 +182,32 @@ class CamarasIpController extends Controller
     { 
         $id = Auth::id();
         $ci = new Ubicacione();
-        
         $ci->direccion = $request->direccion;
         $ci->referencia = $request->referencia;
-        $ci->escena = $request->escena;   
-        $ci->save(); 
+        $ci->escena = $request->escena;
+        $ci->save();
 
-        $nc = new CamarasIp();
-        $nc->user_id = $id;
-        $nc->username = $request->username;
-        $nc->passwd = $request->password;
-        $nc->modelo = $request->modelo;
-        $nc->url = $request->url;
-        $nc->idubicacion = $ci->idubicacion;
-        $nc->estado =1;     
-        $nc->save();
-         
-        $camaras = CamarasIp::where("user_id", $id);
+        if($ci->id >0){
+            $nc = new CamaraIp();
+            $nc->user_id = $id;
+            $nc->username = $request->username;
+            $nc->passwd = $request->password;
+            $nc->modelo = $request->modelo;
+            $nc->url = $request->url;
+            $nc->ubicacion_id = $ci->id;
+            $nc->estado =1;     
+            $nc->save();
+        }
+            
+        $camaras = CamaraIp::where("user_id", $id);
         $out = [];
         foreach ($camaras as $camara) {
-            $ubicacion = Ubicacione::where('idubicacion',$camara->idubicacion)->first();
+            $ubicacion = Ubicacione::where('id',$camara->idubicacion)->first();
             $item = $camara;
             $item['ubicacion'] = $ubicacion;
             $out[] = $item;
         }
+
         return view('admin.paginas.lista_camaras.index',['camarasip'=>$out]);
     }
 

@@ -39,7 +39,7 @@
                                 @foreach($roles as $role) 
                                 <tr>
                                     <td>{{ $role['id'] }}</td>
-                                    <td>{{ $role['nombre'] }}</td>
+                                    <td>{{ $role['name'] }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

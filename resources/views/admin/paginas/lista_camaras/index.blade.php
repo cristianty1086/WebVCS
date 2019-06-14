@@ -61,7 +61,7 @@
                               <tbody>
                                   @foreach($camarasip as $camara) 
                                   <tr>
-                                      <td>{{ $camara['idcamara'] }}</td>
+                                      <td>{{ $camara['id'] }}</td>
                                       <td>{{ $camara['username'] }}</td>
                                       <td>{{ $camara['passwd'] }}</td>
                                       <td>{{ $camara['modelo'] }}</td>
@@ -71,7 +71,7 @@
                                       <td>{{ $camara['ubicacion']['escena'] }}</td>
                                       <td>{{ $camara['estado'] }}</td>                                            
                                       <td> 
-                                          <a href="/edit_camera/{{ $camara->idcamara }}" class="btn btn-xs btn-success" >Editar</a> 
+                                          <a href="/edit_camera/{{ $camara->id }}" class="btn btn-xs btn-success" >Editar</a> 
                                       </td> 
                                   </tr>
                                   @endforeach

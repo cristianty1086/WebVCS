@@ -80,9 +80,9 @@
                         </div> 
                         {{ csrf_field() }}
                             <input name="idc" type="hidden" id="idc" 
-                            placeholder="Escena" value="{{$camaraip->idcamara}}"> 
+                            placeholder="Escena" value="{{$camaraip->id}}"> 
                             <input name="idubicacion" type="hidden" id="idu" 
-                            placeholder="Escena" value="{{$ubicacion->idubicacion}}"> 
+                            placeholder="Escena" value="{{$ubicacion->id}}"> 
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
  
