@@ -7,11 +7,11 @@
     <section class="content-header">
       <h1>
       Panel de control
-        <small>Camaras Ip</small>
+        <small>Usuarios</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Panel de control</a></li>
-        <li class="active">CamarasIp</li>
+        <li class="active">Usuarios</li>
       </ol>
     </section>
 
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="box-body">
-                        <a href="nueva_camara"><button class="btn btn-primary">Agregar</button></a>
+                        <a href="nuevo_usuario"><button class="btn btn-primary">Agregar</button></a>
                     </div>
                 </div>
             </div>
@@ -56,10 +56,10 @@
                               <tbody>
                                   @foreach($usuarios as $usuario) 
                                   <tr>
-                                      <td>{{ $usuario['id'] }}</td>
-                                      <td>{{ $usuario['email'] }}</td>
-                                      <td>{{ $usuario['name'] }}</td> 
-                                      <td>{{ $usuario['role']['nombre'] }}</td> 
+                                      <td>{{ $usuario->id }}</td>
+                                      <td>{{ $usuario->email }}</td>
+                                      <td>{{ $usuario->name }}</td> 
+                                      <td>{{ $usuario->role->name }}</td> 
                                       <td>{{ $usuario['estado'] }}</td>     
                                   </tr>
                                   @endforeach

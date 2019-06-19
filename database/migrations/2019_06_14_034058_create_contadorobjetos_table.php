@@ -15,8 +15,8 @@ class CreateContadorobjetosTable extends Migration
     {
         Schema::create('contadorobjetos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('camaraip_id');
-            //$table->foreign('camaraip_id')->references('id')->on('camarasip');  
+            $table->unsignedBigInteger('camaraip_id');
+            $table->foreign('camaraip_id')->references('id')->on('camarasip');  
             $table->timestamps();
         });
     }

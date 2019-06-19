@@ -8,6 +8,6 @@ class RostrosDetectado extends Model
 {
     //
     protected $table='rostrosdetectados';
-    protected $primaryKey='idrostro';
+    protected $primaryKey='id';
     protected $fillable = ['nombrepersona','nombreimagen','idcamara','fecha'];
 }

@@ -8,6 +8,6 @@ class ContadorObjParam extends Model
 {
     //
     protected $table='contadorobjparams';
-    protected $primaryKey='idcontparam';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','contenido'];
 }

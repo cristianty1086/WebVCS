@@ -51,7 +51,7 @@ class HomeController extends Controller
      */
     public function analisis()
     {
-        $camaras = CamarasIp::orderBy('idcamara','desc')->get();
+        $camaras = CamaraIp::orderBy('id','desc')->get();
         $metodos = MetodoAnalisi::orderBy('nombremetodo','desc')->get();
         return view('admin.paginas.analisis.index',['camarasip'=>$camaras, 'metodos'=>$metodos]);
     }

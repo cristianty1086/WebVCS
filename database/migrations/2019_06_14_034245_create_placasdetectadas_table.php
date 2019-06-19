@@ -17,8 +17,8 @@ class CreatePlacasdetectadasTable extends Migration
             $table->bigIncrements('id');
             $table->char('nombreimagen');
             $table->char('ocr'); 
-            $table->integer('camaraip_id');
-            //$table->foreign('camaraip_id')->references('id')->on('camarasip');
+            $table->unsignedBigInteger('camaraip_id');
+            $table->foreign('camaraip_id')->references('id')->on('camarasip');
             $table->timestamps();
         });
     }

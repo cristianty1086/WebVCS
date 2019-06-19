@@ -8,6 +8,6 @@ class Engine extends Model
 {
     //
     protected $table='engines';
-    protected $primaryKey='idengine';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','metodoanalisis'];
 }

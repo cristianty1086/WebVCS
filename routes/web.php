@@ -35,3 +35,5 @@ Route::post('/post_camara', 'CamarasIpController@update')->name('post_camara')->
 
 Route::get('/analisis', 'HomeController@analisis')->name('analisis')->middleware('auth');
 
+Route::get('/nuevo_usuario', 'UsuarioController@nuevo_usuario')->name('nuevo_usuario')->middleware('auth');
+Route::post('/nuevo_usuario', 'UsuarioController@store')->name('store_usuario')->middleware('auth');

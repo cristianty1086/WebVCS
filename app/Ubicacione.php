@@ -8,6 +8,6 @@ class Ubicacione extends Model
 {
     //
     protected $table='ubicaciones';
-    protected $primaryKey='idubicacion';
+    protected $primaryKey='id';
     protected $fillable = ['direccion','referencia','escena'];
 }

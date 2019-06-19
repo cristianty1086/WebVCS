@@ -15,10 +15,10 @@ class CreateEnginesTable extends Migration
     {
         Schema::create('engines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('camaraip_id');
-            //$table->foreign('camaraip_id')->references('id')->on('camarasip');  
-            $table->integer('metodoanalisi_id');
-            //$table->foreign('metodoanalisi_id')->references('id')->on('metodoanalisis');  
+            $table->unsignedBigInteger('camaraip_id');
+            $table->foreign('camaraip_id')->references('id')->on('camarasip');  
+            $table->unsignedBigInteger('metodoanalisi_id');
+            $table->foreign('metodoanalisi_id')->references('id')->on('metodoanalisis');  
             $table->timestamps();
         });
     }

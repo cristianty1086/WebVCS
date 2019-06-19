@@ -8,6 +8,6 @@ class MetodoAnalisi extends Model
 {
     //
     protected $table='metodoanalisis';
-    protected $primaryKey='idmetodoanalisis';
-    protected $fillable = ['nombremetodo'];
+    protected $primaryKey='id';
+    protected $fillable = ['name'];
 }

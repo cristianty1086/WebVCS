@@ -8,6 +8,6 @@ class ContadorObjeto extends Model
 {
     //
     protected $table='contadorobjetos';
-    protected $primaryKey='idcontadorobjetos';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','fecha'];
 }

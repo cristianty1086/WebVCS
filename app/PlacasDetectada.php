@@ -8,6 +8,6 @@ class PlacasDetectada extends Model
 {
     //
     protected $table='placasdetectadas';
-    protected $primaryKey='idplaca';
+    protected $primaryKey='id';
     protected $fillable = ['nombreimagen','ocr','idcamara','fecha'];
 }

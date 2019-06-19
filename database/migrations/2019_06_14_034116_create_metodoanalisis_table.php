@@ -15,7 +15,7 @@ class CreateMetodoanalisisTable extends Migration
     {
         Schema::create('metodoanalisis', function (Blueprint $table) {
             $table->bigIncrements('id'); 
-            $table->char('nombremetodo');
+            $table->char('name');
             $table->timestamps();
         });
     }

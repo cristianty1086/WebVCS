@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class RoleTableSeeder extends Seeder
+class TipoEstadoUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,22 +12,24 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
-            'name' => "administrador general", 
+        //
+        DB::table('tipoestadouser')->insert([
+            'name' => "prueba", 
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('roles')->insert([
-            'name' => "administrador local", 
+        DB::table('tipoestadouser')->insert([
+            'name' => "pago", 
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('roles')->insert([
-            'name' => "usuario", 
+        DB::table('tipoestadouser')->insert([
+            'name' => "no pago", 
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
     }
 }

@@ -8,6 +8,6 @@ class ObjDejadosParam extends Model
 {
     //
     protected $table='objdejadosparams';
-    protected $primaryKey='idobjdejados';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','contenido'];
 }

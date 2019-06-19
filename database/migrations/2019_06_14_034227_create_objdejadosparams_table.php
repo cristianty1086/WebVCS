@@ -15,8 +15,8 @@ class CreateObjdejadosparamsTable extends Migration
     {
         Schema::create('objdejadosparams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('camaraip_id');
-            //$table->foreign('camaraip_id')->references('id')->on('camarasip');
+            $table->unsignedBigInteger('camaraip_id');
+            $table->foreign('camaraip_id')->references('id')->on('camarasip');
             $table->char('contenido');
             $table->timestamps();
         });

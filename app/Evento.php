@@ -8,6 +8,6 @@ class Evento extends Model
 {
     //
     protected $table='eventos';
-    protected $primaryKey='idevento';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','idtipoevento','fecha'];
 }

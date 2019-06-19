@@ -15,7 +15,7 @@ class CreateTipoestadouserTable extends Migration
     {
         Schema::create('tipoestadouser', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('estadocuenta');
+            $table->char('name');
             $table->timestamps();
         });
     }

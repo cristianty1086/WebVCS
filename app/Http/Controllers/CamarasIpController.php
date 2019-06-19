@@ -108,9 +108,17 @@ class CamarasIpController extends Controller
         $ci->ubicacion_id = $request->idubicacion;
         $ci->estado = $request->estado;     
         $ci->update();
+
+
+        $ubicacion = Ubicacione::findOrFail($request->idc);
+        $ubicacion->direccion = $request->direccion;
+        $ubicacion->referencia = $request->referencia;
+        $ubicacion->escena = $request->escena; 
+        $ubicacion->update();
         
-        $camaras = CamaraIp::all();                
-        return view('admin.paginas.lista_camaras.index',['camarasip'=>$camaras]);
+        //$camaras = CamaraIp::all();    
+        return redirect('/camaras_ip');            
+        //return view('admin.paginas.lista_camaras.index',['camarasip'=>$camaras]);
     }
     
     /**
@@ -185,30 +193,20 @@ class CamarasIpController extends Controller
         $ci->direccion = $request->direccion;
         $ci->referencia = $request->referencia;
         $ci->escena = $request->escena;
-        $ci->save();
+        $ci->save(); 
 
-        if($ci->id >0){
-            $nc = new CamaraIp();
-            $nc->user_id = $id;
-            $nc->username = $request->username;
-            $nc->passwd = $request->password;
-            $nc->modelo = $request->modelo;
-            $nc->url = $request->url;
-            $nc->ubicacion_id = $ci->id;
-            $nc->estado =1;     
-            $nc->save();
-        }
-            
-        $camaras = CamaraIp::where("user_id", $id);
-        $out = [];
-        foreach ($camaras as $camara) {
-            $ubicacion = Ubicacione::where('id',$camara->idubicacion)->first();
-            $item = $camara;
-            $item['ubicacion'] = $ubicacion;
-            $out[] = $item;
-        }
+        $nc = new CamaraIp();
+        $nc->user_id = $id;
+        $nc->username = $request->username;
+        $nc->passwd = $request->password;
+        $nc->modelo = $request->modelo;
+        $nc->url = $request->url;
+        $nc->ubicacion_id = $ci->id;
+        $nc->estado =1;     
+        $nc->save();
 
-        return view('admin.paginas.lista_camaras.index',['camarasip'=>$out]);
+        //return view('admin.paginas.lista_camaras.index',['camarasip'=>$nc]);
+        return redirect('/camaras_ip');    
     }
 
  

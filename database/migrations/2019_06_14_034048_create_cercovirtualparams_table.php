@@ -15,8 +15,8 @@ class CreateCercovirtualparamsTable extends Migration
     {
         Schema::create('cercovirtualparams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('camaraip_id');
-            //$table->foreign('camaraip_id')->references('id')->on('camarasip');  
+            $table->unsignedBigInteger('camaraip_id');
+            $table->foreign('camaraip_id')->references('id')->on('camarasip');  
             $table->string('contenido'); 
             $table->integer('width');
             $table->integer('height'); 

@@ -8,6 +8,6 @@ class MetodoBaseParam extends Model
 {
     //
     protected $table='metodobaseparams';
-    protected $primaryKey='idmetodobase';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','contenido'];
 }

@@ -8,6 +8,6 @@ class CercoVirtualParam extends Model
 {
     //
     protected $table='cercovirtualparams';
-    protected $primaryKey='idcercoparam';
+    protected $primaryKey='id';
     protected $fillable = ['idcamara','contenido','width','height'];
 }

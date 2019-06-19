@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContadorobjparamsTable extends Migration
+class CreateUserRolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateContadorobjparamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contadorobjparams', function (Blueprint $table) {
+        Schema::create('user_rol', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('camaraip_id');
-            $table->foreign('camaraip_id')->references('id')->on('camarasip');  
-            $table->string('contenido'); 
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users'); 
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles'); 
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateContadorobjparamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contadorobjparams');
+        Schema::dropIfExists('user_rol');
     }
 }
